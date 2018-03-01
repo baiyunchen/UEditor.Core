@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\upload\image\20180301\6365553733498975251066419.jpg" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553764095797429477620.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553771877164978585366.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553792271863014427442.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553814707550068545288.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553817594950636141588.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553838243343358586049.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553861441634768340224.png" />
+    <Content Remove="wwwroot\upload\image\20180301\6365553961525747655072253.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Cors" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UEditor.Core\UEditor.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\upload\image\20180301\6365553733498975251066419.jpg" />
+    <None Include="wwwroot\upload\image\20180301\6365553764095797429477620.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553771877164978585366.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553792271863014427442.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553814707550068545288.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553817594950636141588.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553838243343358586049.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553861441634768340224.png" />
+    <None Include="wwwroot\upload\image\20180301\6365553961525747655072253.png" />
+  </ItemGroup>
+
+</Project>
