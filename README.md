@@ -47,7 +47,7 @@ public class UEditorController : Controller
 ```
 到此，我们的后端代码就全部搞定了
 
-需要注意的是，如果你的项目需要跨域，那么记得要配置跨域哦~
+需要注意的是，如果你的UEditor所在网站的地址和这个API的地址没有在同一个域名下，那么记得要配置跨域哦~
 
 具体怎么配置允许跨域请移步：https://docs.microsoft.com/zh-cn/aspnet/core/security/cors
 # 修改前端UEditor的配置
