@@ -16,7 +16,7 @@ namespace UEditor.Core
         {
             var configExtension = Path.GetExtension(ConfigFile);
             var configFileName = ConfigFile.Substring(0, ConfigFile.Length - configExtension.Length);
-            var evnConfig = $"{configFileName}.{Config.EnvName}.{configExtension}";
+            var evnConfig = $"{configFileName}.{Config.EnvName}{configExtension}";
             if (File.Exists(Path.Combine(WebRootPath, evnConfig)))
             {
                 var json = File.ReadAllText(Path.Combine(WebRootPath, evnConfig));
