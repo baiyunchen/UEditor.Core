@@ -12,7 +12,6 @@ namespace UEditor.Core
     {
         public static bool NoCache = true;
 
-
         private static JObject BuildItems()
         {
             var json = File.ReadAllText(Path.Combine(WebRootPath, ConfigFile));
@@ -33,7 +32,7 @@ namespace UEditor.Core
 
         public static string WebRootPath { get; set; }
 
-        public static string WwwRootPath { get; set; }
+        // public static string WwwRootPath { get; set; }
 
         public static string ConfigFile { set; get; } = "ueditor.json";
 

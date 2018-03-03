@@ -3,20 +3,19 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Http;
-using UEditor.Core;
 
 namespace UEditor.Core.Handlers
 {
     public class CrawlerHandler : Handler
     {
-        private string[] Sources;
-        private Crawler[] Crawlers;
+        private string[] _sources;
+        private Crawler[] _crawlers;
         public CrawlerHandler(HttpContext context) : base(context) { }
 
         public override UEditorResult Process()
         {
-            Sources = Request.Form["source[]"];
-            if (Sources == null || Sources.Length == 0)
+            _sources = Request.Form["source[]"];
+            if (_sources == null || _sources.Length == 0)
             {
                 return new UEditorResult
                 {
@@ -24,11 +23,11 @@ namespace UEditor.Core.Handlers
                 };
 
             }
-            Crawlers = Sources.Select(x => new Crawler(x).Fetch()).ToArray();
+            _crawlers = _sources.Select(x => new Crawler(x).Fetch()).ToArray();
             return new UEditorResult
             {
                 State = "SUCCESS",
-                List = Crawlers.Select(x => new UEditorFileList
+                List = _crawlers.Select(x => new UEditorFileList
                 {
                     State = x.State,
                     Source = x.SourceUrl,
@@ -52,26 +51,26 @@ namespace UEditor.Core.Handlers
 
         public Crawler Fetch()
         {
-            if (!IsExternalIPAddress(this.SourceUrl))
+            if (!IsExternalIpAddress(this.SourceUrl))
             {
                 State = "INVALID_URL";
                 return this;
             }
-            var request = HttpWebRequest.Create(this.SourceUrl) as HttpWebRequest;
+            var request = WebRequest.Create(this.SourceUrl) as HttpWebRequest;
             using (var response = request.GetResponse() as HttpWebResponse)
             {
-                if (response.StatusCode != HttpStatusCode.OK)
+                if (response != null && response.StatusCode != HttpStatusCode.OK)
                 {
                     State = "Url returns " + response.StatusCode + ", " + response.StatusDescription;
                     return this;
                 }
-                if (response.ContentType.IndexOf("image") == -1)
+                if (response != null && response.ContentType.IndexOf("image", StringComparison.Ordinal) == -1)
                 {
                     State = "Url is not an image";
                     return this;
                 }
                 ServerUrl = PathFormatter.Format(Path.GetFileName(this.SourceUrl), Config.GetString("catcherPathFormat"));
-                var savePath = Path.Combine(Config.WwwRootPath, ServerUrl);
+                var savePath = Path.Combine(Config.WebRootPath, ServerUrl);
 
                 if (!Directory.Exists(Path.GetDirectoryName(savePath)))
                 {
@@ -79,20 +78,24 @@ namespace UEditor.Core.Handlers
                 }
                 try
                 {
-                    var stream = response.GetResponseStream();
-                    var reader = new BinaryReader(stream);
-                    byte[] bytes;
-                    using (var ms = new MemoryStream())
+                    if (response != null)
                     {
-                        byte[] buffer = new byte[4096];
-                        int count;
-                        while ((count = reader.Read(buffer, 0, buffer.Length)) != 0)
+                        var stream = response.GetResponseStream();
+                        var reader = new BinaryReader(stream);
+                        byte[] bytes;
+                        using (var ms = new MemoryStream())
                         {
-                            ms.Write(buffer, 0, count);
+                            byte[] buffer = new byte[4096];
+                            int count;
+                            while ((count = reader.Read(buffer, 0, buffer.Length)) != 0)
+                            {
+                                ms.Write(buffer, 0, count);
+                            }
+                            bytes = ms.ToArray();
                         }
-                        bytes = ms.ToArray();
+                        File.WriteAllBytes(savePath, bytes);
                     }
-                    File.WriteAllBytes(savePath, bytes);
+
                     State = "SUCCESS";
                 }
                 catch (Exception e)
@@ -103,7 +106,7 @@ namespace UEditor.Core.Handlers
             }
         }
 
-        private bool IsExternalIPAddress(string url)
+        private bool IsExternalIpAddress(string url)
         {
             var uri = new Uri(url);
             switch (uri.HostNameType)
@@ -129,12 +132,12 @@ namespace UEditor.Core.Handlers
             return false;
         }
 
-        private bool IsPrivateIP(IPAddress myIPAddress)
+        private bool IsPrivateIP(IPAddress myIpAddress)
         {
-            if (IPAddress.IsLoopback(myIPAddress)) return true;
-            if (myIPAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            if (IPAddress.IsLoopback(myIpAddress)) return true;
+            if (myIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
             {
-                byte[] ipBytes = myIPAddress.GetAddressBytes();
+                byte[] ipBytes = myIpAddress.GetAddressBytes();
                 // 10.0.0.0/24 
                 if (ipBytes[0] == 10)
                 {

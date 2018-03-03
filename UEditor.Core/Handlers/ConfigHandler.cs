@@ -8,10 +8,6 @@ namespace UEditor.Core.Handlers
     /// </summary>
     public class ConfigHandler
     {
-        public ConfigHandler(HttpContext context)
-        {
-        }
-
         public JObject Process()
         {
             return Config.Items;
