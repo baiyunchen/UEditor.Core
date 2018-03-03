@@ -14,8 +14,19 @@ namespace UEditor.Core
 
         private static JObject BuildItems()
         {
-            var json = File.ReadAllText(Path.Combine(WebRootPath, ConfigFile));
-            return JObject.Parse(json);
+            var configExtension = Path.GetExtension(ConfigFile);
+            var configFileName = ConfigFile.Substring(0, ConfigFile.Length - configExtension.Length);
+            var evnConfig = $"{configFileName}.{Config.EnvName}.{configExtension}";
+            if (File.Exists(Path.Combine(WebRootPath, evnConfig)))
+            {
+                var json = File.ReadAllText(Path.Combine(WebRootPath, evnConfig));
+                return JObject.Parse(json);
+            }
+            else
+            {
+                var json = File.ReadAllText(Path.Combine(WebRootPath, ConfigFile));
+                return JObject.Parse(json);
+            }
         }
 
         public static JObject Items
@@ -29,6 +40,8 @@ namespace UEditor.Core
                 return _Items;
             }
         }
+
+        public static string EnvName { get; set; }
 
         public static string WebRootPath { get; set; }
 

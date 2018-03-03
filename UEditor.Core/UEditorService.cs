@@ -11,9 +11,9 @@ namespace UEditor.Core
         public UEditorService(IHostingEnvironment env)
         {
             // .net core的名字起的比较怪而已，并不是我赋值赋错了
-            // Config.WebRootPath = env.WebRootPath;
-
             Config.WebRootPath = env.ContentRootPath;
+
+            Config.EnvName = env.EnvironmentName;
         }
 
         /// <summary>
