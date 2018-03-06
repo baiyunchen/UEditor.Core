@@ -11,9 +11,9 @@ namespace UEditor.Core
         public UEditorService(IHostingEnvironment env)
         {
             // .net core的名字起的比较怪而已，并不是我赋值赋错了
-            Config.WwwRootPath = env.WebRootPath;
-
             Config.WebRootPath = env.ContentRootPath;
+
+            Config.EnvName = env.EnvironmentName;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace UEditor.Core
             object result;
             if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
             {
-                var configHandle = new ConfigHandler(context);
+                var configHandle = new ConfigHandler();
                 result = configHandle.Process();
             }
             else
@@ -68,7 +68,7 @@ namespace UEditor.Core
             object result;
             if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
             {
-                result = new ConfigHandler(context);
+                result = new ConfigHandler();
             }
             else
             {

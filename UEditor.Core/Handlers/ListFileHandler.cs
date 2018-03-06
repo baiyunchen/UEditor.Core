@@ -51,7 +51,7 @@ namespace UEditor.Core.Handlers
             var buildingList = new List<String>();
             try
             {
-                var localPath = Path.Combine(Config.WwwRootPath, PathToList);
+                var localPath = Path.Combine(Config.WebRootPath, PathToList);
                 buildingList.AddRange(Directory.GetFiles(localPath, "*", SearchOption.AllDirectories)
                     .Where(x => SearchExtensions.Contains(Path.GetExtension(x).ToLower()))
                     .Select(x => PathToList + x.Substring(localPath.Length).Replace("\\", "/")));
