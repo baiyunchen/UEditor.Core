@@ -1,61 +1,57 @@
 # UEditor.Core
+# 示例代码
+- [传统多页应（MPA）用中使用UEditor](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Web)
+
+其他示例正在完善中，后续示例代码将实现以下功能：
+- API中使用UEditor.Core
+- 跨域使用UEditor
+
+**敬请期待！！！**
+
 # 使用方法
-## 从nuget安装包：
-方式1：可以直接在Nuget中搜索UEditor.Core并安装
-方式2：通过命令行安装
-```
-Install-Package UEditor.Core -Version 1.0.0
-```
-## 在启动时注入相关服务
-在Startup.cs中的ConfigureServices方法中，加入以下代码：
-```
- services.AddUEditorService("ueditor.json",true);
-```
-该方法中，第一个参数为ueditor的后端配置文件路径，默认值为`ueditor.json`，第二个参数为是否缓存配置，默认为`true`,当缓存配置时，默认仅会从后端配置文件中加载一次数据，之后都会从缓存中读取。
+对于在传统MPA应用和API中使用UEditor,分别有详细的文档，请参阅：
+- [传统多页应（MPA）用中使用UEditor](Docs/传统的使用方式.md)
+- [API中使用UEditor（待完善）](Docs/API的使用方式.md)
+- 跨域使用UEditor（待完善）
+- UEditor.Core可配置项
+- UEditor.Core多环境
 
-这两个参数均为可选参数，你完全可以写成：
-```
- services.AddUEditorService();
-```
-# 添加配置文件
-从UEditor中或本项目的Demo项目中，复制ueditor.json文件，复制到你的项目中，最终只需要将这个文件的相对路径在Startup.cs中注入服务时指定正确即可。
+# 安装
+> 建议从从nuget安装
 
-如果你看不懂上面的这句话，那就把这个项目放到你Web或者API项目的根目录（与`appsettings.json`同级即可），然后上面Startup.cs中的代码写成下面这样：
+- 方式1：可以直接在Nuget中搜索UEditor.Core并安装
+
+- 方式2：通过命令行安装
 ```
- services.AddUEditorService();
+Install-Package UEditor.Core
 ```
-最后，需要按照自己的实际情况，修改一下ueditor.json文件，具体怎么改，请参考这里：http://fex.baidu.com/ueditor/#server-config
-# 添加控制器
-添加一个UEditorController，然后搞成下面这样子：
+
+# 配置
+## 可选配置项
+
+在注入Service时，可以支持一些可选的配置，具体参数如下：
+
+### configFileRelativePath
+后端配置文件的相对路径，默认值为`ueditor.json`,即项目根目录的`ueditor.json`文件，这个文件是从UEditor官方提供的.NET版本下载包中的`utf8-net\net\config.json`复制过来的
+### isCacheConfig
+是否缓存配置文件，默认值为true。当设置为不缓存时，每次都会从文件中读取配置文件；当设置为缓存时，则第一次从配置文件中读取，以后都从内存中读取
+### basePath
+相对路径的根目录，默认值为项目的根目录，即`env.ContentRootPath`。系统中的后端配置文件、各种上传的路径都是基于该地址去计算其实际地址的。
+
+> **特别注意：**
+
+> 在修改`basePath`后，一定要注意调整后端配置文件中的`imageUrlPrefix`、`scrawlUrlPrefix`等等各种文件访问路径的前缀，否则可能出现文件可以上传，但是前端编辑器中总显示不出来的问题。
+
+## 配置项使用方式
+配置项需要在注入Service时设置，示例代码如下：
 ```
-[Route("api/ueditor")]
-public class UEditorController : Controller
+public void ConfigureServices(IServiceCollection services)
 {
-    private readonly UEditorService _ueditorService;
-    public UEditorController(UEditorService ueditorService)
-    {
-        this._ueditorService = ueditorService;
-    }
-
-    [HttpGet, HttpPost]
-    public ContentResult Upload()
-    {
-        var response = _ueditorService.UploadAndGetResponse(HttpContext);
-        return Content(response.Result, response.ContentType);
-    }
+   services.AddUEditorService(configFileRelativePath: "config.json",
+       isCacheConfig: false,
+       basePath: "C:/basepath");
+   services.AddMvc();
 }
-```
-到此，我们的后端代码就全部搞定了
-
-需要注意的是，如果你的UEditor所在网站的地址和这个API的地址没有在同一个域名下，那么记得要配置跨域哦~
-
-具体怎么配置允许跨域请移步：https://docs.microsoft.com/zh-cn/aspnet/core/security/cors
-# 修改前端UEditor的配置
-UEditor前端的配置位于根目录的ueditor.config.js中，我们需要在这个文件中找到`serverUrl`节点，然后指定刚添加的Controller中的API地址，从而告诉UEditor图片之类的文件要往哪里上传。
-大概的配置代码如下：
-```
-serverUrl: "http://你的域名+端口/api/ueditor"
 ```
 
 ## 大功告成，祝你大吉大利，今晚吃鸡
-

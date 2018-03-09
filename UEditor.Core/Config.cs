@@ -24,7 +24,12 @@ namespace UEditor.Core
             }
             else
             {
-                var json = File.ReadAllText(Path.Combine(WebRootPath, ConfigFile));
+                var configFilePath = Path.Combine(WebRootPath, ConfigFile);
+                if (!File.Exists(configFilePath))
+                {
+                    throw new Exception("未找到UEditor配置文件，请检查！若有问题，请参阅文档：https://github.com/baiyunchen/UEditor.Core");
+                }
+                var json = File.ReadAllText(configFilePath);
                 return JObject.Parse(json);
             }
         }
