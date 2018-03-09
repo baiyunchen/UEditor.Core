@@ -1,0 +1,3 @@
+.NetCore2.0和.NetFramework4.7 都可以引用类库.Net Standard
+所以将核心部分移到 Ueditor.Standard里面，然后根据不同的方向做调整.  Ueditor.Core中实现.core ,Ueditor.Framework实现 .NetFramework
+添加了Same.Mvc 的demo  基于.NetFramewor4.7的实现

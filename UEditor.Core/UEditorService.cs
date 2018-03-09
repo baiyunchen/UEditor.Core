@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
-using UEditor.Core.Handlers;
+using UEditor.Standard;
+using UEditor.Standard.Handlers;
+//using UEditor.Core.Handlers;
 
 namespace UEditor.Core
 {
@@ -24,40 +26,43 @@ namespace UEditor.Core
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public UEditorResponse UploadAndGetResponse(HttpContext context)
+        public UEditorResponse UploadAndGetResponse(IHttpContextHander context)
         {
-            var action = context.Request.Query["action"];
-            object result;
-            if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
-            {
-                var configHandle = new ConfigHandler();
-                result = configHandle.Process();
-            }
-            else
-            {
-                var handle = HandelFactory.GetHandler(action, context);
-                result = handle.Process();
-            }
-            string resultJson = JsonConvert.SerializeObject(result, new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            string contentType = "text/plain";
+            #region MyRegion
+            //var action = context.Request.Query["action"];
+            //object result;
+            //if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
+            //{
+            //    var configHandle = new ConfigHandler();
+            //    result = configHandle.Process();
+            //}
+            //else
+            //{
+            //    var handle = HandelFactory.GetHandler(action, context);
+            //    result = handle.Process();
+            //}
+            //string resultJson = JsonConvert.SerializeObject(result, new JsonSerializerSettings
+            //{
+            //    NullValueHandling = NullValueHandling.Ignore
+            //});
+            //string contentType = "text/plain";
 
-            string jsonpCallback = context.Request.Query["callback"];
+            //string jsonpCallback = context.Request.Query["callback"];
 
-            if (!string.IsNullOrWhiteSpace(jsonpCallback))
-            {
-                contentType = "application/javascript";
-                resultJson = string.Format("{0}({1});", jsonpCallback, resultJson);
-                UEditorResponse response = new UEditorResponse(contentType, resultJson);
-                return response;
-            }
-            else
-            {
-                UEditorResponse response = new UEditorResponse(contentType, resultJson);
-                return response;
-            }
+            //if (!string.IsNullOrWhiteSpace(jsonpCallback))
+            //{
+            //    contentType = "application/javascript";
+            //    resultJson = string.Format("{0}({1});", jsonpCallback, resultJson);
+            //    UEditorResponse response = new UEditorResponse(contentType, resultJson);
+            //    return response;
+            //}
+            //else
+            //{
+            //    UEditorResponse response = new UEditorResponse(contentType, resultJson);
+            //    return response;
+            //} 
+            #endregion
+           return UEditorResponse.GetUEditorResponse(BaseUEditorService.Current.UploadAndGetResponse(context));
         }
 
         /// <summary>
@@ -65,9 +70,9 @@ namespace UEditor.Core
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public object Upload(HttpContext context)
+        public object Upload(IHttpContextHander context)
         {
-            var action = context.Request.Query["action"];
+            var action = context.QueryString("action");
             object result;
             if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
             {
