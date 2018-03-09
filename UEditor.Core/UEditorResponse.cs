@@ -1,4 +1,6 @@
-﻿namespace UEditor.Core
+﻿using UEditor.Standard;
+
+namespace UEditor.Core
 {
     public class UEditorResponse
     {
@@ -12,5 +14,10 @@
         public string ContentType { get; set; }
 
         public string Result { get; set; }
+
+        public static UEditorResponse GetUEditorResponse(BaseUEditorResponse baseUEditor)
+        {
+            return new UEditorResponse(baseUEditor.ContentType, baseUEditor.Result);
+        }
     }
 }

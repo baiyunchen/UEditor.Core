@@ -1,0 +1,474 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1587F66-57E2-40CF-9897-1C91206F0D34}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Same.Mvc</RootNamespace>
+    <AssemblyName>Same.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="lib\bootstrap\dist\js\npm.js" />
+    <Content Include="Global.asax" />
+    <Content Include="lib\jquery\dist\jquery.js" />
+    <Content Include="lib\jquery\dist\jquery.min.js" />
+    <Content Include="lib\jquery\LICENSE.txt" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\anchor\anchor.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\attachment.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\attachment.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\attachment.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\alignicon.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\file-icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\image.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\progress.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\success.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\attachment\images\success.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\background\background.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\background\background.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\background\background.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\background\images\bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\background\images\success.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\chart.config.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\charts.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\charts.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\charts.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts0.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts1.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts2.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts3.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts4.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\charts\images\charts5.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\emotion.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\emotion.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\emotion.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\0.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\bface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\cface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\fface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\tface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\wface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\emotion\images\yface.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\gmap\gmap.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\help\help.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\help\help.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\help\help.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\image.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\image.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\image.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\alignicon.jpg" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\image.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\progress.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\success.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\image\images\success.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\insertframe\insertframe.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\internal.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\link\link.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\map\map.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\map\show.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\music\music.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\music\music.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\music\music.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\preview\preview.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\addimg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\brush.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\delimg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\empty.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\eraser.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\redo.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\redoH.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\scale.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\size.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\undo.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\images\undoH.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\scrawl.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\scrawl.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\scrawl\scrawl.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\spechars\spechars.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\spechars\spechars.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\dragicon.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\edittable.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\edittable.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\edittable.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\edittd.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\table\edittip.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\config.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\bg.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\pre0.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\pre1.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\pre2.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\pre3.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\images\pre4.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\template.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\template.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\template\template.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\center_focus.jpg" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\file-icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\file-icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\image.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\left_focus.jpg" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\none_focus.jpg" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\progress.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\right_focus.jpg" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\success.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\images\success.png" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\video.css" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\video.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\video\video.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\webapp\webapp.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\wordimage\tangram.js" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\wordimage\wordimage.html" />
+    <Content Include="lib\ueditor-1.4.3.3\dialogs\wordimage\wordimage.js" />
+    <Content Include="lib\ueditor-1.4.3.3\index.html" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\en.js" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\addimage.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\background.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\button.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\copy.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\deletedisable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\deleteenable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\listbackground.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\localimage.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\music.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\rotateleftdisable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\rotateleftenable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\rotaterightdisable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\rotaterightenable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\en\images\upload.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\zh-cn\images\copy.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\zh-cn\images\localimage.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\zh-cn\images\music.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\zh-cn\images\upload.png" />
+    <Content Include="lib\ueditor-1.4.3.3\lang\zh-cn\zh-cn.js" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\css\ueditor.css" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\css\ueditor.min.css" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\dialogbase.css" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\anchor.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\arrow.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\arrow_down.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\arrow_up.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\button-bg.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\cancelbutton.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\charts.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\cursor_h.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\cursor_h.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\cursor_v.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\cursor_v.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\dialog-title-bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\filescan.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\highlighted.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\icons-all.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\icons.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\icons.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\loaderror.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\loading.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\lock.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\pagebreak.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\scale.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\sortable.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\spacer.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\sparator_v.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\table-cell-align.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\toolbar_bg.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\unhighlighted.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\upload.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\videologo.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\word.gif" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\default\images\wordpaste.png" />
+    <Content Include="lib\ueditor-1.4.3.3\themes\iframe.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\codemirror\codemirror.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\codemirror\codemirror.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\highcharts-more.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\highcharts.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\highcharts.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\annotations.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\data.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\data.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\exporting.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\funnel.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\map.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\map.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\themes\gray.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\themes\grid.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\highcharts\themes\skies.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\jquery-1.10.2.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\jquery-1.10.2.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\font\vjs.svg" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\video-js.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\video-js.min.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\video-js.swf" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\video.dev.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\video.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\Uploader.swf" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.css" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\xss.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="lib\ueditor-1.4.3.3\ueditor.all.js" />
+    <Content Include="lib\ueditor-1.4.3.3\ueditor.all.min.js" />
+    <Content Include="lib\ueditor-1.4.3.3\ueditor.config.js" />
+    <Content Include="lib\ueditor-1.4.3.3\ueditor.parse.js" />
+    <Content Include="lib\ueditor-1.4.3.3\ueditor.parse.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UEditorController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="NLog.config" />
+    <Content Include="lib\bootstrap\.bower.json" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lib\bootstrap\LICENSE" />
+    <Content Include="lib\jquery\.bower.json" />
+    <Content Include="lib\jquery\dist\jquery.min.map" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\jquery-1.10.2.min.map" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\font\vjs.eot" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\font\vjs.ttf" />
+    <Content Include="lib\ueditor-1.4.3.3\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="ueditor.gqc.json">
+      <DependentUpon>ueditor.json</DependentUpon>
+    </Content>
+    <Content Include="ueditor.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\UEditor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UEditor.Framework\UEditor.Framework.csproj">
+      <Project>{76d7d0c9-0c26-44fd-9470-739905e6665c}</Project>
+      <Name>UEditor.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UEditor.Standard\UEditor.Standard.csproj">
+      <Project>{EF31842F-E70F-4FD0-A153-60E9403EBC03}</Project>
+      <Name>UEditor.Standard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6711</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6711/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

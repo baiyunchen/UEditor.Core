@@ -20,7 +20,7 @@ namespace Sample.Api.Controllers
         [HttpGet, HttpPost]
         public ContentResult Upload()
         {
-            var response = _ueditorService.UploadAndGetResponse(HttpContext);
+            var response = _ueditorService.UploadAndGetResponse(HttpContext.GetHttpContext());
             return Content(response.Result, response.ContentType);
         }
 

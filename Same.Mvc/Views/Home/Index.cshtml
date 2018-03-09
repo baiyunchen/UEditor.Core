@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "传统多页应用中使用UEditor";
+}
+<h3>传统多页应用中使用Ueditor.Mvc</h3>
+<div class="row">
+    <div>
+        <button type="button" class="btn btn-default btn-primary" onclick="GetContentTxt()">获取文本内容</button>
+        <button type="button" class="btn btn-default btn-primary" onclick="GetContent()">获取编辑器内容</button>
+        <button type="button" class="btn btn-default btn-primary" onclick="SetContentT()">设置内容</button>
+    </div>
+    <div class="col-md-12">
+        <script id="container" name="content" type="text/plain">
+            欢迎使用Ueditor.Mvc
+        </script>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        var ue = UE.getEditor('container', {
+            initialFrameHeight: 500
+        });
+        var msg = "";
+        function GetContentTxt() {
+            msg = ue.getContentTxt();
+            ShowMsg(msg);
+        }
+        function GetContent() {
+            msg = ue.getContent();
+            ShowMsg(msg);
+        }
+        function SetContentT() {
+            msg = prompt("请输入文本内容", "这里填写内容");
+            if (msg) { ue.setContent(msg); msg = "";}
+        }
+        function ShowMsg(msg) {
+            alert(msg);
+            msg = "";
+        }
+    </script>
+}

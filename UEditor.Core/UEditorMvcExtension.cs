@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿//using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using UEditor.Standard;
 
 namespace UEditor.Core
 {
@@ -23,6 +26,11 @@ namespace UEditor.Core
             Config.WebRootPath = basePath;
 
             services.TryAddSingleton<UEditorService>();
+        }
+
+        public static IHttpContextHander GetHttpContext(this HttpContext httpContex)
+        {
+            return new HttpContextHander(httpContex);
         }
     }
 }
