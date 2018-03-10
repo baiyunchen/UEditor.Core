@@ -60,6 +60,6 @@ public void ConfigureServices(IServiceCollection services)
 ```
 # 特别感谢
   优秀的开源项目离不开大家的支持，非常感谢为以下为本项目提供好的建议或PR的朋友：
-  - @wtujvk
+  - [wtujvk](https://github.com/wtujvk)
 
 ## 大功告成，祝你大吉大利，今晚吃鸡
