@@ -24,6 +24,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+[Uu]pload/
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -302,5 +303,4 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
-/src/ZHT.Shop.WebHost/App_Data/Logs/
-/src/ZHT.RestfulApi.Host/App_Data/Logs/
+
