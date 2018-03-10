@@ -11,7 +11,7 @@ namespace UEditor.Core
     {
         public static string Format(string originFileName, string pathFormat)
         {
-            if (String.IsNullOrWhiteSpace(pathFormat))
+            if (pathFormat.IsNullOrWhiteSpace())
             {
                 pathFormat = "{filename}{rand:6}";
             }

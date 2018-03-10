@@ -4,7 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+#if NETSTANDARD2_0
 using Microsoft.AspNetCore.Http;
+#endif
+#if NET35
+using System.Web;
+#endif
 
 namespace UEditor.Core.Handlers
 {
@@ -37,7 +42,12 @@ namespace UEditor.Core.Handlers
             }
             else
             {
+#if NETSTANDARD2_0
                 var file = Request.Form.Files[UploadConfig.UploadFieldName];
+#endif
+#if NET35
+                var file = Request.Files[UploadConfig.UploadFieldName];
+#endif
                 uploadFileName = file.FileName;
 
                 if (!CheckFileType(uploadFileName))
@@ -45,18 +55,33 @@ namespace UEditor.Core.Handlers
                     Result.State = UploadState.TypeNotAllow;
                     return WriteResult();
                 }
+#if NETSTANDARD2_0
                 if (!CheckFileSize(file.Length))
+#endif
+#if NET35
+                if (!CheckFileSize(file.ContentLength))
+#endif
+
                 {
                     Result.State = UploadState.SizeLimitExceed;
                     return WriteResult();
 
                 }
-
+#if NETSTANDARD2_0
                 uploadFileBytes = new byte[file.Length];
-                try
+                 try
                 {
                     file.OpenReadStream().Read(uploadFileBytes, 0, (int)file.Length);
                 }
+#endif
+#if NET35
+                uploadFileBytes = new byte[file.ContentLength];
+                try
+                {
+                    file.InputStream.Read(uploadFileBytes, 0, file.ContentLength);
+                }
+#endif
+
                 catch (Exception)
                 {
                     Result.State = UploadState.NetworkError;

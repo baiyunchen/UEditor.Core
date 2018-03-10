@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net35</TargetFrameworks>
     <Version>1.0.3</Version>
     <Authors>baiyunchen,lilei</Authors>
-    <Description>百度UEditor图片、文件等上传所依赖的后端服务.Net Core 版本，简单易用，文档优秀，速来尝试。
-任何问题或建议，均可在Github提交Issue，我们尽可能第一时间处理：https://github.com/baiyunchen/UEditor.Core/issues</Description>
+    <Description>
+      百度UEditor图片、文件等上传所依赖的后端服务.Net Core 版本，简单易用，文档优秀，速来尝试。
+      任何问题或建议，均可在Github提交Issue，我们尽可能第一时间处理：https://github.com/baiyunchen/UEditor.Core/issues
+    </Description>
     <PackageReleaseNotes>Upgrade Base Framework To .Net Standard</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/baiyunchen/UEditor.Core</PackageProjectUrl>
     <PackageTags />
@@ -12,18 +14,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.hosting.abstractions\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">    
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core">     
     </Reference>
   </ItemGroup>
-
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.AspNetCore">
+      <Version>2.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
+    <Reference Include="System.Web" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
 </Project>

@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿#if NETSTANDARD2_0
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+#endif
+#if NET35
+using System.Web;
+#endif
 using Newtonsoft.Json;
 using System;
 using UEditor.Core.Handlers;
@@ -8,6 +13,7 @@ namespace UEditor.Core
 {
     public class UEditorService
     {
+#if NETSTANDARD2_0
         public UEditorService(IHostingEnvironment env)
         {
             // .net core的名字起的比较怪而已，并不是我赋值赋错了
@@ -18,7 +24,27 @@ namespace UEditor.Core
 
             Config.EnvName = env.EnvironmentName;
         }
+#endif
+#if NET35
+        private UEditorService()
+        {
 
+        }
+
+        private static UEditorService _instance;
+
+        public static UEditorService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new UEditorService();
+                }
+                return _instance;
+            }
+        }
+#endif
         /// <summary>
         /// 上传并返回结果，已处理跨域Jsonp请求
         /// </summary>
@@ -26,7 +52,13 @@ namespace UEditor.Core
         /// <returns></returns>
         public UEditorResponse UploadAndGetResponse(HttpContext context)
         {
-            var action = context.Request.Query["action"];
+#if NETSTANDARD2_0
+             var action = context.Request.Query["action"];
+#endif
+#if NET35
+            var action = context.Request.QueryString["action"];
+#endif
+
             object result;
             if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
             {
@@ -43,10 +75,13 @@ namespace UEditor.Core
                 NullValueHandling = NullValueHandling.Ignore
             });
             string contentType = "text/plain";
-
-            string jsonpCallback = context.Request.Query["callback"];
-
-            if (!string.IsNullOrWhiteSpace(jsonpCallback))
+#if NETSTANDARD2_0
+             string jsonpCallback = context.Request.Query["callback"];
+#endif
+#if NET35
+            string jsonpCallback = context.Request.QueryString["callback"];
+#endif
+            if (!jsonpCallback.IsNullOrWhiteSpace())
             {
                 contentType = "application/javascript";
                 resultJson = string.Format("{0}({1});", jsonpCallback, resultJson);
@@ -67,7 +102,12 @@ namespace UEditor.Core
         /// <returns></returns>
         public object Upload(HttpContext context)
         {
-            var action = context.Request.Query["action"];
+#if NETSTANDARD2_0
+             var action = context.Request.Query["action"];
+#endif
+#if NET35
+            var action = context.Request.QueryString["action"];
+#endif 
             object result;
             if (AppConsts.Action.Config.Equals(action, StringComparison.OrdinalIgnoreCase))
             {

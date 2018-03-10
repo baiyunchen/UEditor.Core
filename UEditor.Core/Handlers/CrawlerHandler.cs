@@ -2,8 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Net;
+#if NETSTANDARD2_0
 using Microsoft.AspNetCore.Http;
-
+#endif
+#if NET35
+using System.Web;
+#endif
 namespace UEditor.Core.Handlers
 {
     public class CrawlerHandler : Handler
@@ -14,7 +18,12 @@ namespace UEditor.Core.Handlers
 
         public override UEditorResult Process()
         {
+#if NETSTANDARD2_0
             _sources = Request.Form["source[]"];
+#endif
+#if NET35
+            _sources = Request.Form.GetValues("source[]");
+#endif
             if (_sources == null || _sources.Length == 0)
             {
                 return new UEditorResult

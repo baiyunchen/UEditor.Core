@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+#if NETSTANDARD2_0
 using Microsoft.AspNetCore.Http;
+#endif
+#if NET35
+using System.Web;
+#endif
 
 namespace UEditor.Core.Handlers
 {
@@ -39,8 +44,14 @@ namespace UEditor.Core.Handlers
         {
             try
             {
-                Start = String.IsNullOrEmpty(Request.Query["start"]) ? 0 : Convert.ToInt32(Request.Query["start"]);
-                Size = String.IsNullOrEmpty(Request.Query["size"]) ? Config.GetInt("imageManagerListSize") : Convert.ToInt32(Request.Query["size"]);
+#if NETSTANDARD2_0
+                Start = string.IsNullOrWhiteSpace(Request.Query["start"]) ? 0 : Convert.ToInt32(Request.Query["start"]);
+                Size = string.IsNullOrWhiteSpace(Request.Query["size"]) ? Config.GetInt("imageManagerListSize") : Convert.ToInt32(Request.Query["size"]);
+#endif
+#if NET35
+                Start = Request["start"].IsNullOrWhiteSpace() ? 0 : Convert.ToInt32(Request["start"]);
+                Size = Request["size"].IsNullOrWhiteSpace() ? Config.GetInt("imageManagerListSize") : Convert.ToInt32(Request["size"]);
+#endif
             }
             catch (FormatException)
             {

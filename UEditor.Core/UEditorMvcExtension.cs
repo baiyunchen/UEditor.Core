@@ -1,10 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿#if NETSTANDARD2_0
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
+#endif
+#if NET35
+using System.Web;
+#endif
 namespace UEditor.Core
 {
     public static class UEditorMvcExtension
     {
+#if NETSTANDARD2_0
         /// <summary>
         /// 添加UEditor后端服务
         /// </summary>
@@ -24,5 +29,24 @@ namespace UEditor.Core
 
             services.TryAddSingleton<UEditorService>();
         }
+#endif
+#if NET35
+        public static void AddUEditorService(string configFileRelativePath = "ueditor.json", bool isCacheConfig = true, string basePath = "", string environmentName = "")
+        {
+            Config.ConfigFile = configFileRelativePath;
+            Config.NoCache = isCacheConfig;
+            if (!basePath.IsNullOrWhiteSpace())
+            {
+                Config.WebRootPath = basePath;
+            }
+            else
+            {
+                Config.WebRootPath = HttpContext.Current.Server.MapPath("~/");
+            }
+
+            Config.EnvName = environmentName;
+        }
+#endif
+
     }
 }

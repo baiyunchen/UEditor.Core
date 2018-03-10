@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿#if NETSTANDARD2_0
+using Microsoft.AspNetCore.Http;
+#endif
+#if NET35
+using System.Web;
+#endif
 
 namespace UEditor.Core.Handlers
 {
