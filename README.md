@@ -1,14 +1,8 @@
 # UEditor.Core
 # 示例代码
 - [传统多页应（MPA）用中使用UEditor.Core](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Web)
-- [API中使用UEditor.Core](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Mvc)
+- [API中使用UEditor.Core（支持跨域）](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Mvc)
 - [.NET Framework MVC 中使用UEditor.Core](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Mvc)
-
-其他示例正在完善中，后续示例代码将实现以下功能：
-
-- 跨域使用UEditor
-
-**敬请期待！！！**
 
 # 使用方法
 
@@ -18,8 +12,8 @@
 - [传统多页应（MPA）用中使用UEditor](Docs/传统的使用方式.md)
 - [API中使用UEditor（待完善）](Docs/API的使用方式.md)
 - 跨域使用UEditor（待完善）
-- UEditor.Core可配置项
-- UEditor.Core多环境
+- .Net Framework中使用UEditor.Core(待完善)
+- [UEditor.Core多环境](Docs/多环境配置.md)
 
 # 安装
 > 建议从从nuget安装
@@ -58,6 +52,7 @@ public void ConfigureServices(IServiceCollection services)
    services.AddMvc();
 }
 ```
+
 # 特别感谢
   优秀的开源项目离不开大家的支持，非常感谢为以下为本项目提供好的建议或PR的朋友：
   - [wtujvk](https://github.com/wtujvk)
