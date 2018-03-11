@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net35</TargetFrameworks>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>baiyunchen,lilei</Authors>
-    <Description>
-      百度UEditor图片、文件等上传所依赖的后端服务.Net Core 版本，简单易用，文档优秀，速来尝试。
-      任何问题或建议，均可在Github提交Issue，我们尽可能第一时间处理：https://github.com/baiyunchen/UEditor.Core/issues
-    </Description>
-    <PackageReleaseNotes>Upgrade Base Framework To .Net Standard</PackageReleaseNotes>
+    <Description>百度UEditor图片、文件等上传所依赖的后端服务，支持.Net Core 2.0+以及.Net Framework 3.5+，简单易用，文档优秀，速来尝试。
+任何问题或建议，均可在Github提交Issue，我们尽可能第一时间处理：https://github.com/baiyunchen/UEditor.Core/issues
+</Description>
+    <PackageReleaseNotes>Optimize support for the.net framework.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/baiyunchen/UEditor.Core</PackageProjectUrl>
     <PackageTags />
     <RepositoryUrl>https://github.com/baiyunchen/UEditor.Core</RepositoryUrl>
