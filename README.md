@@ -1,4 +1,7 @@
 # UEditor.Core
+
+> 首先给大家安利另外一个基于UEditor写的富文本框编辑器[neditor](https://github.com/notadd/neditor) ，看起来相当不错，不过我还没有来得及尝试！
+
 # 示例代码
 - [传统多页应（MPA）用中使用UEditor.Core](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Web)
 - [API中使用UEditor.Core（支持跨域）](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Mvc)
