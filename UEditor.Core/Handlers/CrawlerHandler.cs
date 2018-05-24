@@ -18,13 +18,23 @@ namespace UEditor.Core.Handlers
 
         public override UEditorResult Process()
         {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0            
             _sources = Request.Form["source[]"];
+
+            //fixed bug:https://github.com/baiyunchen/UEditor.Core/pull/5
+            if (_sources == null || _sources.Length == 0)
+            {
+                _sources = Request.Query["source[]"];
+            }
 #endif
 #if NET35
             _sources = Request.Form.GetValues("source[]");
 
-            if (_sources == null || _sources.Length == 0) _sources = Request.QueryString.GetValues("source[]");
+            //fixed bug:https://github.com/baiyunchen/UEditor.Core/pull/5
+            if (_sources == null || _sources.Length == 0) 
+            {
+                _sources = Request.QueryString.GetValues("source[]");
+            }
 #endif
             if (_sources == null || _sources.Length == 0)
             {
