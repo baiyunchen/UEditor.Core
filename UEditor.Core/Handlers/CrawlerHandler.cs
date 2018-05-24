@@ -23,6 +23,8 @@ namespace UEditor.Core.Handlers
 #endif
 #if NET35
             _sources = Request.Form.GetValues("source[]");
+
+            if (_sources == null || _sources.Length == 0) _sources = Request.QueryString.GetValues("source[]");
 #endif
             if (_sources == null || _sources.Length == 0)
             {
