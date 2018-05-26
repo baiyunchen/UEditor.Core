@@ -90,7 +90,17 @@ namespace UEditor.Core.Handlers
                     State = "Url is not an image";
                     return this;
                 }
-                ServerUrl = PathFormatter.Format(Path.GetFileName(this.SourceUrl), Config.GetString("catcherPathFormat"));
+
+                var sourceUrl = "";
+                if (this.SourceUrl.Contains("?"))
+                {
+                    sourceUrl = this.SourceUrl.Substring(0, this.SourceUrl.IndexOf("?", StringComparison.Ordinal));
+                }
+                else
+                    sourceUrl = this.SourceUrl;
+
+                ServerUrl = PathFormatter.Format(Path.GetFileName(sourceUrl), Config.GetString("catcherPathFormat"));
+                
                 var savePath = Path.Combine(Config.WebRootPath, ServerUrl);
 
                 if (!Directory.Exists(Path.GetDirectoryName(savePath)))
