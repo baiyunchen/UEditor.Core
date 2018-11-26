@@ -2,6 +2,8 @@
 
 > 首先给大家安利另外一个基于UEditor写的富文本框编辑器[neditor](https://github.com/notadd/neditor) ，看起来相当不错，不过我还没有来得及尝试！最起码它是基于UEditor的，肯定不会比UEditor差。其次，他的接口没有变化，所以理论上来说，本项目的接口也可以适配到neditor中，有人已经试过了。如果在适配NEditor的过程中遇到什么问题，我也可以协助解决！
 
+**作者一直在，只是没有什么太多问题，所以版本更新较少，有ISSUE会第一时间处理，请放心使用**
+
 # 示例代码
 
 - [传统多页应（MPA）用中使用UEditor.Core](https://github.com/baiyunchen/UEditor.Core/tree/master/Sample.Web)
