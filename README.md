@@ -17,6 +17,10 @@
 - [.NET Framework中使用UEditor.Core](Docs/NETFramework中使用.md)
 - [UEditor.Core多环境](Docs/多环境配置.md)
 
+另外，可以参考网络上其他人写的相关文章：
+- [关于ASP.NET Core如何使用UEditor编辑器](https://blog.csdn.net/qq_34220236/article/details/80581811)
+- [.net core + angular 项目中使用ueditor遇到的问题](https://cloud.tencent.com/developer/article/1191886)
+
 # 安装
 > 强烈建议从nuget安装
 
