@@ -55,10 +55,17 @@ namespace Sample.Api
                     ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=36000");
                 }
             });
+           
             app.UseCors("Default");
             app.UseStaticFiles();
-            app.UseMvc();
-          
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
         }
     }
 }
